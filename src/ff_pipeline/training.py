@@ -49,6 +49,7 @@ def train(
         shuffle=True,
         max_samples=cfg.max_train_samples,
         seed=cfg.seed,
+        repeat=True,
     )
     val_ds = make_hdf5_dataset(
         val_h5,
@@ -57,6 +58,7 @@ def train(
         shuffle=False,
         max_samples=cfg.max_val_samples,
         seed=cfg.seed,
+        repeat=True,
     )
 
     model, base = build_multitask_model(

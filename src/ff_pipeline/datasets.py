@@ -17,6 +17,7 @@ def make_hdf5_dataset(
     shuffle: bool = True,
     max_samples: int | None = None,
     seed: int = 42,
+    repeat: bool = False,
 ) -> tf.data.Dataset:
     """Create a tf.data.Dataset streaming from HDF5."""
     validate_h5(h5_path, spec)
@@ -52,6 +53,8 @@ def make_hdf5_dataset(
 
     ds = ds.map(lambda x, y: (tf.cast(x, tf.float32) / 255.0, y), num_parallel_calls=tf.data.AUTOTUNE)
     ds = ds.batch(batch_size).prefetch(tf.data.AUTOTUNE)
+    if repeat:
+        ds = ds.repeat()
     return ds
 
 

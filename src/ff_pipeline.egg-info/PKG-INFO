@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: ff-pipeline
+Version: 0.1.0
+Summary: Reusable pipeline for FairFace preprocessing, training, and evaluation.
+Requires-Python: >=3.11
